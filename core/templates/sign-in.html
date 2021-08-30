@@ -1,0 +1,50 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Login {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card-group">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <h1>Login</h1>
+                        <p class="text-muted">
+                            Sign In to your account - <a href="/">HOME</a>
+                        </p>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend"><span class="input-group-text">
+                  <svg class="c-icon">
+                    <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                  </svg></span></div>
+                            <input class="form-control" type="text" placeholder="Username">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text">
+                  <svg class="c-icon">
+                    <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                  </svg></span></div>
+                            <input class="form-control" type="password" placeholder="Password">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-primary px-4" type="button">Login</button>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="/sign-up.html" class="btn btn-link px-0">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

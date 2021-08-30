@@ -1,0 +1,114 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} List Pc {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+    <link href="/static/assets/vendors/@coreui/icons/css/free.min.css" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header">
+                <h4 class="card-title">List Pc</h4>
+                <nav class="nav">
+                    {#		<form class="form-inline" action="salesoutlet/search" method="GET">#}
+                    {#		<input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ old('search') }}">#}
+                    {#		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+                    {#		</form>#}
+                    <a class="btn btn-info btn-sm" href="{% url 'PcNew' %}">Add New Pc</a>
+                </nav>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="">
+                        <thead class=" text-primary">
+                        <tr>
+                            <th>PC NUMBER</th>
+                            <th>MOTHERBOARD</th>
+                            <th>PSU</th>
+                            <th>SSD</th>
+                            <th>HDD</th>
+                            <th>RAM1</th>
+                            <th>RAM2</th>
+                            <th>OPTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if object_list %}
+                            {% for data in object_list %}
+                                <tr>
+                                    <td>{{ data.pc_number }}</td>
+                                    <td>{{ data.motherboard }}</td>
+                                    <td>{{ data.psu }}</td>
+                                    <td>{{ data.ssd }}</td>
+                                    <td>{{ data.hdd }}</td>
+                                    <td>{{ data.ram1 }}</td>
+                                    <td>{{ data.ram2 }}</td>
+                                    <td>
+                                        <a href="{% url 'PcEdit' data.pc_number %}"
+                                           class="btn btn-info btn-sm">
+                                            <i class="c-icon cil-pencil"></i>
+                                        </a>
+                                        <a href="{% url 'PcDelete' data.pc_number %}"
+                                           class="btn btn-danger btn-sm"
+                                           onclick="return confirm('Delete Pc {{ data.name }}')">
+                                            <i class="c-icon cil-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                    {% if page_obj.has_other_pages %}
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li>
+                                    <a class="btn btn-light btn-sm" href="?page=1">&laquo; first</a>
+                                    <a class="btn btn-light btn-sm"
+                                       href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <span class="btn btn-light btn-sm disabled">&laquo; first</span>
+                                    <span class="btn btn-light btn-sm disabled">&laquo;</span>
+                                </li>
+                            {% endif %}
+
+                            {% for i in page_obj.paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                    <li class="btn btn btn-dark btn-sm active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+                                    </li>
+                                {% elif i <= page_obj.number|add:10 and i >= page_obj.number|add:-10 %}
+                                    <li><a class="btn btn-light btn-sm" href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li>
+                                    <a class="btn btn-light btn-sm"
+                                       href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                                    <a class="btn btn-light btn-sm"
+                                       href="?page={{ page_obj.paginator.num_pages }}">last {{ page_obj.paginator.num_pages }}
+                                        &raquo;</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <span class="btn btn-light btn-sm disabled">&raquo;</span>
+                                    <span class="btn btn-light btn-sm disabled">last {{ page_obj.paginator.num_pages }} &raquo;</span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

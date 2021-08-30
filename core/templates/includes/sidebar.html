@@ -1,0 +1,96 @@
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <div class="c-sidebar-brand d-lg-down-none">
+        OSIRIS
+    </div>
+    <ul class="c-sidebar-nav">
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="/">
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
+            </svg>
+            Dashboard</a></li>
+        {% if perms.Inventory.request %}
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown"><a
+                class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-notes"></use>
+            </svg>
+            Request</a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{% url 'RequestServerList' %}" target="_top">
+                        List Request</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{% url 'RequestServerApprovedList' %}" target="_top">
+                        List Approved Request</a>
+                </li>
+            </ul>
+        </li>
+        {% endif %}
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown"><a
+                class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-notes"></use>
+            </svg>
+            Inventory</a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{% url 'PcList' %}" target="_top">
+                        Pc</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{% url 'RequestServerApprovedList' %}" target="_top">
+                        Ssd</a>
+                </li>
+            </ul>
+        </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown"><a
+                class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-notes"></use>
+            </svg>
+            License</a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{% url 'AntiVirusList' %}" target="_top">
+                        List AntiVirus</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{% url 'AntiVirusRequestedList' %}" target="_top">
+                        List Requested</a>
+                </li>
+            </ul>
+        </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown"><a
+                class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-people"></use>
+            </svg>
+            Customer</a>
+            <ul class="c-sidebar-nav-dropdown-items">
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{% url 'CustomerList' %}" target="_top">
+                        List Customer</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{% url 'PrincipalList' %}" target="_top">
+                        List Principal</a>
+                </li>
+                <li class="c-sidebar-nav-item">
+                    <a class="c-sidebar-nav-link" href="{% url 'DistributorList' %}" target="_top">
+                        List Distributor</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="c-sidebar-nav-divider"></li>
+        <li class="c-sidebar-nav-title">Logout</li>
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href={% url 'logout' %}?next={% url 'login' %}>
+            <svg class="c-sidebar-nav-icon">
+                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+            </svg>
+            Logout</a></li>
+    </ul>
+    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
+            data-class="c-sidebar-minimized"></button>
+</div>

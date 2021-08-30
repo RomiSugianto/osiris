@@ -1,0 +1,13 @@
+asgiref==3.3.1
+Django==3.1.5
+django-crispy-forms==1.10.0
+docxtpl==0.11.3
+Jinja2==2.11.2
+lxml==4.6.2
+MarkupSafe==1.1.1
+Pillow==8.1.0
+psycopg2==2.8.6
+python-docx==0.8.10
+pytz==2020.5
+six==1.15.0
+sqlparse==0.4.1

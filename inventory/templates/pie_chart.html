@@ -1,0 +1,70 @@
+{% extends "layouts/base.html" %}
+
+{#{% load crispy_forms_tags %}#}
+
+{% block title %} New Request {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% load static %}
+{% block stylesheets %}
+    <script src="{% static 'assets/js/core/Chart.min.js' %}"></script>
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-category">Total Request</h5>
+                    <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> {{ total}}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area" style="width: 90%;">
+                        <canvas id="pie-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    <script>
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        var config = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: {{ data|safe }},
+                    backgroundColor: [
+                        getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor(), getRandomColor()
+                    ],
+                    label: 'Population',
+                    labelColor: getRandomColor()
+                }],
+                labels: {{ labels|safe }}
+            },
+            options: {
+                responsive: true
+            }
+        };
+
+        window.onload = function () {
+            var ctx = document.getElementById('pie-chart').getContext('2d');
+            window.myPie = new Chart(ctx, config);
+        };
+
+    </script>
+{% endblock javascripts %}

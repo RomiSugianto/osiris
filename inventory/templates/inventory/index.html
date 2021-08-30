@@ -1,0 +1,251 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+    <link href="/static/assets/vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <main class="c-main">
+        <div class="container-fluid">
+            <div class="fade-in">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-white bg-gradient-primary">
+                            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="text-value-lg">9.823</div>
+                                    <div>Request</div>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-transparent dropdown-toggle p-0" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg class="c-icon">
+                                            <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a
+                                            class="dropdown-item" href="#">Another action</a><a class="dropdown-item"
+                                                                                                href="#">Something else
+                                        here</a></div>
+                                </div>
+                            </div>
+                            <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
+                                <canvas class="chart" id="card-chart1" height="70"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-white bg-gradient-info">
+                            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="text-value-lg">9.245</div>
+                                    <div>Request Approved</div>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-transparent dropdown-toggle p-0" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg class="c-icon">
+                                            <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a
+                                            class="dropdown-item" href="#">Another action</a><a class="dropdown-item"
+                                                                                                href="#">Something else
+                                        here</a></div>
+                                </div>
+                            </div>
+                            <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
+                                <canvas class="chart" id="card-chart2" height="70"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-white bg-gradient-warning">
+                            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="text-value-lg">578</div>
+                                    <div>Request Canceled</div>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-transparent dropdown-toggle p-0" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg class="c-icon">
+                                            <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a
+                                            class="dropdown-item" href="#">Another action</a><a class="dropdown-item"
+                                                                                                href="#">Something else
+                                        here</a></div>
+                                </div>
+                            </div>
+                            <div class="c-chart-wrapper mt-3" style="height:70px;">
+                                <canvas class="chart" id="card-chart3" height="70"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-->
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="card text-white bg-gradient-danger">
+                            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                                <div>
+                                    <div class="text-value-lg">9.823</div>
+                                    <div>Members online</div>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-transparent dropdown-toggle p-0" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <svg class="c-icon">
+                                            <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Action</a><a
+                                            class="dropdown-item" href="#">Another action</a><a class="dropdown-item"
+                                                                                                href="#">Something else
+                                        here</a></div>
+                                </div>
+                            </div>
+                            <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
+                                <canvas class="chart" id="card-chart4" height="70"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-->
+                </div>
+                <!-- /.row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">Latest Update</div>
+                            <div class="card-body">
+                                <div class="row">
+                                </div>
+                                <!-- /.row--><br>
+                                <table class="table table-responsive-sm table-hover table-outline mb-0">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th class="text-center">
+                                            <svg class="c-icon">
+                                                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-people"></use>
+                                            </svg>
+                                        </th>
+                                        <th>Requester</th>
+                                        <th class="text-center">Principal</th>
+                                        <th>Distributor</th>
+                                        <th class="text-center">Approved?</th>
+                                        <th>Implementation Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="c-avatar"><img class="c-avatar-img"
+                                                                       src="/static/assets/img/avatars/1.jpg"
+                                                                       alt="user@email.com"><span
+                                                    class="c-avatar-status bg-success"></span></div>
+                                        </td>
+                                        <td>
+                                            <div>Budi</div>
+                                            <div class="small text-muted"><span>New</span> | Registered: Jan 1, 2015
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div>PRINCIPAL ABC</div>
+                                        </td>
+                                        <td>
+                                            <div>PT TERUS MAJU</div>
+                                        </td>
+                                        <td class="text-center">
+                                            <svg class="c-icon c-icon-xl">
+                                                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-check"></use>
+                                            </svg>
+                                        </td>
+                                        <td>
+                                            <strong>Jan 25, 2015</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="c-avatar"><img class="c-avatar-img"
+                                                                       src="/static/assets/img/avatars/2.jpg"
+                                                                       alt="user@email.com"><span
+                                                    class="c-avatar-status bg-danger"></span></div>
+                                        </td>
+                                        <td>
+                                            <div>Rita</div>
+                                            <div class="small text-muted"><span>New</span> | Registered: Jan 1, 2015
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div>PRINCIPAL DEF</div>
+                                        </td>
+                                        <td>
+                                            <div>PT MAJU TERUS</div>
+                                        </td>
+                                        <td class="text-center">
+                                            <svg class="c-icon c-icon-xl">
+                                                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-check"></use>
+                                            </svg>
+                                        </td>
+                                        <td>
+                                            <strong>Jan 25, 2015</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="c-avatar"><img class="c-avatar-img"
+                                                                       src="/static/assets/img/avatars/3.jpg"
+                                                                       alt="user@email.com"><span
+                                                    class="c-avatar-status bg-warning"></span></div>
+                                        </td>
+                                        <td>
+                                            <div>Rosi</div>
+                                            <div class="small text-muted"><span>New</span> | Registered: Jan 1, 2015
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div>PRINCIPAL GHI</div>
+                                        </td>
+                                        <td>
+                                            <div>PT MAJU MUNDUR</div>
+                                        </td>
+                                        <td class="text-center">
+                                            <svg class="c-icon c-icon-xl">
+                                                <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-check"></use>
+                                            </svg>
+                                        </td>
+                                        <td>
+                                            <strong>Jan 25, 2015</strong>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col-->
+                </div>
+                <!-- /.row-->
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+    <!-- Plugins and scripts required by this view-->
+    <script src="/static/assets/vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
+    <script src="/static/assets/vendors/@coreui/utils/js/coreui-utils.js"></script>
+    <script src="/static/assets/js/main.js"></script>
+
+{% endblock javascripts %}

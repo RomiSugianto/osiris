@@ -1,0 +1,133 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} List Request Server {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+    <link href="/static/assets/vendors/@coreui/icons/css/free.min.css" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header">
+                <h4 class="card-title">List Request Server</h4>
+                <nav class="nav">
+                    {#		<form class="form-inline" action="salesoutlet/search" method="GET">#}
+                    {#		<input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" value="{{ old('search') }}">#}
+                    {#		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+                    {#		</form>#}
+                    <a class="btn btn-info btn-sm" href="{% url 'RequestServerNew' %}">Add New Request</a>
+                </nav>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="">
+                        <thead class=" text-primary">
+                        <tr>
+                            <th>IMPLEMENTATION DATE</th>
+                            <th>PRINCIPAL</th>
+                            <th>DIST</th>
+                            <th>CREATED BY</th>
+                            <th>SPEC</th>
+                            <th>STATUS</th>
+                            <th>DOWNLOAD DOC</th>
+                            <th>SENT AT</th>
+                            <th>DOC RETURNED AT</th>
+                            <th>OPTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if object_list %}
+                            {% for data in object_list %}
+                                <form action="{% url 'RequestServerApprove' data.id %}" class="form" method="post">
+                                    {% csrf_token %}
+                                    <tr>
+                                        <input type="hidden" name="request_server_id" value="{{ data.id }}"/>
+                                        <input type="hidden" name="user_id" value="{{ request.user.id }}"/>
+                                        <td>{{ data.implementation_date }}</td>
+                                        <td>{{ data.customer.principal.name }}</td>
+                                        <td>{{ data.customer.distributor.name }}</td>
+                                        <td>{{ data.created_by.user.user }}</td>
+                                        {% if data.remark is not None %}
+                                            <td>{{ data.remark }}</td>
+                                        {% else %}
+                                            <td>
+                                                <select name="remark" required>
+                                                    <option selected disabled>SPEC</option>
+                                                    <option value="8GB/120GB">8GB/120GB</option>
+                                                    <option value="16GB/250GB">16GB/250GB</option>
+                                                </select>
+                                            </td>
+                                        {% endif %}
+                                        <td>{{ data.pc_status }}</td>
+                                        {% if data.approved_by is not None and data.pc is not None %}
+                                            <td><a href="{% url 'sp' data.id %}">SP</a> |
+                                                <a href="{% url 'fp' data.id %}">FP</a></td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
+                                        <td>{{ data.document_sent_at }}</td>
+                                        <td>{{ data.document_received_back_at }}</td>
+                                        {% if data.approved_by is None %}
+                                            <td>
+                                                <button type="submit" name="Submit" class="btn btn-primary btn-sm">
+                                                    APPROVE
+                                                </button>
+                                            </td>
+                                        {% else %}
+                                            <td>Approved</td>
+                                        {% endif %}
+                                    </tr>
+                                </form>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                    {% if page_obj.has_other_pages %}
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li>
+                                    <a class="btn btn-light btn-sm" href="?page=1">&laquo; first</a>
+                                    <a class="btn btn-light btn-sm"
+                                           href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <span class="btn btn-light btn-sm disabled">&laquo; first</span>
+                                    <span class="btn btn-light btn-sm disabled">&laquo;</span>
+                                </li>
+                            {% endif %}
+
+                            {% for i in page_obj.paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                    <li class="btn btn btn-dark btn-sm active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+                                    </li>
+                                {% elif i <= page_obj.number|add:10 and i >= page_obj.number|add:-10 %}
+                                    <li><a class="btn btn-light btn-sm" href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li>
+                                    <a class="btn btn-light btn-sm" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                                    <a class="btn btn-light btn-sm" href="?page={{ page_obj.paginator.num_pages }}">last {{ page_obj.paginator.num_pages }} &raquo;</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <span class="btn btn-light btn-sm disabled">&raquo;</span>
+                                    <span class="btn btn-light btn-sm disabled">last {{ page_obj.paginator.num_pages }} &raquo;</span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
