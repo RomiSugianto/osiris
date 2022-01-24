@@ -180,7 +180,7 @@ class CustomerListView(ListView):
     paginate_by = 10
     ordering = ['id']
 
-    @method_decorator(permission_required('inventory.view_requestserver'))
+    @method_decorator(permission_required('inventory.view_customer'))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
@@ -358,3 +358,163 @@ def pc_new(request):
     else:
         form = PcForm
         return render(request, 'inventory/pc_new.html', {'form': form})
+
+
+class SsdView(ListView):
+    template_name = 'inventory/ssd.html'
+    model = Ssd
+    paginate_by = 10
+
+
+def ssd_delete(request, pk):
+    ssd = get_object_or_404(Ssd, pk=pk)
+    ssd.delete()
+    return redirect('SsdList')
+
+
+def ssd_edit(request, pk):
+    ssd = get_object_or_404(Ssd, pk=pk)
+    form = SsdForm(request.POST or None, instance=ssd)
+    if form.is_valid():
+        form.save()
+        return redirect('SsdList')
+    return render(request, 'inventory/ssd_edit.html', {'form': form})
+
+
+def ssd_new(request):
+    if request.method == 'POST':
+        form = SsdForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('SsdList')
+    else:
+        form = SsdForm
+        return render(request, 'inventory/ssd_new.html', {'form': form})
+
+
+class HddView(ListView):
+    template_name = 'inventory/hdd.html'
+    model = Hdd
+    paginate_by = 10
+
+
+def hdd_delete(request, pk):
+    ssd = get_object_or_404(Ssd, pk=pk)
+    ssd.delete()
+    return redirect('SsdList')
+
+
+def hdd_edit(request, pk):
+    ssd = get_object_or_404(Hdd, pk=pk)
+    form = HddForm(request.POST or None, instance=ssd)
+    if form.is_valid():
+        form.save()
+        return redirect('HddList')
+    return render(request, 'inventory/hdd_edit.html', {'form': form})
+
+
+def hdd_new(request):
+    if request.method == 'POST':
+        form = HddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('HddList')
+    else:
+        form = HddForm
+        return render(request, 'inventory/hdd_new.html', {'form': form})
+
+
+class PsuView(ListView):
+    template_name = 'inventory/psu.html'
+    model = Psu
+    paginate_by = 10
+
+
+def psu_delete(request, pk):
+    psu = get_object_or_404(Psu, pk=pk)
+    psu.delete()
+    return redirect('PsuList')
+
+
+def psu_edit(request, pk):
+    psu = get_object_or_404(Psu, pk=pk)
+    form = PsuForm(request.POST or None, instance=psu)
+    if form.is_valid():
+        form.save()
+        return redirect('PsuList')
+    return render(request, 'inventory/psu_edit.html', {'form': form})
+
+
+def psu_new(request):
+    if request.method == 'POST':
+        form = PsuForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('PsuList')
+    else:
+        form = PsuForm
+        return render(request, 'inventory/psu_new.html', {'form': form})
+
+
+class RamView(ListView):
+    template_name = 'inventory/ram.html'
+    model = Ram
+    paginate_by = 10
+
+
+def ram_delete(request, pk):
+    ram = get_object_or_404(Ram, pk=pk)
+    ram.delete()
+    return redirect('RamList')
+
+
+def ram_edit(request, pk):
+    ram = get_object_or_404(Ram, pk=pk)
+    form = RamForm(request.POST or None, instance=ram)
+    if form.is_valid():
+        form.save()
+        return redirect('RamList')
+    return render(request, 'inventory/ram_edit.html', {'form': form})
+
+
+def ram_new(request):
+    if request.method == 'POST':
+        form = RamForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('RamList')
+    else:
+        form = RamForm
+        return render(request, 'inventory/ram_new.html', {'form': form})
+
+
+class MotherboardView(ListView):
+    template_name = 'inventory/motherboard.html'
+    model = Motherboard
+    paginate_by = 10
+
+
+def motherboard_delete(request, pk):
+    motherboard = get_object_or_404(Motherboard, pk=pk)
+    motherboard.delete()
+    return redirect('MotherboardList')
+
+
+def motherboard_edit(request, pk):
+    motherboard = get_object_or_404(Motherboard, pk=pk)
+    form = MotherboardForm(request.POST or None, instance=motherboard)
+    if form.is_valid():
+        form.save()
+        return redirect('MotherboardList')
+    return render(request, 'inventory/motherboard_edit.html', {'form': form})
+
+
+def motherboard_new(request):
+    if request.method == 'POST':
+        form = MotherboardForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('MotherboardList')
+    else:
+        form = MotherboardForm
+        return render(request, 'inventory/motherboard_new.html', {'form': form})

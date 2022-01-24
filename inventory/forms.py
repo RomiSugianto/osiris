@@ -82,3 +82,32 @@ class PcForm(ModelForm):
         model = Pc
         fields = '__all__'
 
+
+class SsdForm(ModelForm):
+    class Meta:
+        model = Ssd
+        fields = '__all__'
+
+
+class HddForm(ModelForm):
+    class Meta:
+        model = Hdd
+        fields = '__all__'
+
+
+class PsuForm(ModelForm):
+    class Meta:
+        model = Psu
+        fields = '__all__'
+
+
+class RamForm(ModelForm):
+    class Meta:
+        model = Ram
+        fields = '__all__'
+
+
+class MotherboardForm(ModelForm):
+    class Meta:
+        model = Motherboard
+        fields = '__all__'

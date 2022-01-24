@@ -7,7 +7,7 @@ urlpatterns = [
     path('fp/<int:pk>/', views.fp_view, name="fp"),
     path('pie_chart/', views.pie_chart, name="chart"),
     # path('merge/<int:pk>/', views.merge_view, name="merge"),
-    path('pagetest/<int:pk>/', views.test_view, name="PageTest"),
+    # path('pagetest/<int:pk>/', views.test_view, name="PageTest"),
 
     # REQUEST-SERVER
     path('request-server/', views.RequestServerView.as_view(), name="RequestServerList"),
@@ -48,4 +48,28 @@ urlpatterns = [
     path('pc/<str:pk>/edit/', views.pc_edit, name="PcEdit"),
     path('pc/new/', views.pc_new, name="PcNew"),
     path('pc/<str:pk>/delete/', views.pc_delete, name="PcDelete"),
+
+    # SSD
+    path('ssd/', views.SsdView.as_view(), name="SsdList"),
+    path('ssd/<str:pk>/edit/', views.ssd_edit, name="SsdEdit"),
+    path('ssd/new/', views.ssd_new, name="SsdNew"),
+    path('ssd/<str:pk>/delete/', views.ssd_delete, name="SsdDelete"),
+
+    # HDD
+    path('hdd/', views.HddView.as_view(), name="HddList"),
+    path('hdd/<str:pk>/edit/', views.hdd_edit, name="HddEdit"),
+    path('hdd/new/', views.hdd_new, name="HddNew"),
+    path('hdd/<str:pk>/delete/', views.hdd_delete, name="HddDelete"),
+
+    # PSU
+    path('psu/', views.PsuView.as_view(), name="PsuList"),
+    path('psu/<str:pk>/edit/', views.psu_edit, name="PsuEdit"),
+    path('psu/new/', views.psu_new, name="PsuNew"),
+    path('psu/<str:pk>/delete/', views.psu_delete, name="PsuDelete"),
+
+    # RAM
+    path('ram/', views.RamView.as_view(), name="RamList"),
+    path('ram/<str:pk>/edit/', views.ram_edit, name="RamEdit"),
+    path('ram/new/', views.ram_new, name="RamNew"),
+    path('ram/<str:pk>/delete/', views.ram_delete, name="RamDelete"),
 ]
